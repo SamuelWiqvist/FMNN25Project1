@@ -18,9 +18,15 @@ class Spline:
     def _blossom(self, u):
         
     def plot(s, points):
-
-def eval_basis(u, j):
 """
+def eval_basis(u, j): # just something I came up with, I dont know if it is correct / Samuel
+    control_points = [(0,0)]
+    for i in range(1, len(u)-3):
+        control_points.append((0,0))
+    control_points[j] = (1,1) 
+    s_temp = Spline(u,control_points)
+    points = np.linspace(min(u),max(u),100).tolist()     
+    plot(s_temp, points)
 
 
 
