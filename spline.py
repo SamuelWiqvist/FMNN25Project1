@@ -17,7 +17,9 @@ class Spline:
         
     def _blossom(self, u):
         
-    def plot(self, points):
+    def plot(s, points):
+
+def eval_basis(u, j):
 """
 
 
