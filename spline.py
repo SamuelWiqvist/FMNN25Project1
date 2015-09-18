@@ -8,7 +8,7 @@ class Spline:
         self.control_points = control_points
 
     def __call__(self, u):
-        return self._blossom(self, u)
+        return self._blossom(u)
 
     def _find_controlPoints(self, u):
         # returns an array with four first control points
