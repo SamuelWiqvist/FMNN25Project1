@@ -65,5 +65,6 @@ class Spline:
 def eval_basis(grid, j):
     control_points = np.zeros((len(grid)-3,2))
     control_points[j] = 1
+    control_points.T
     s_temp = Spline(grid,control_points)
     s_temp.plot(100)
