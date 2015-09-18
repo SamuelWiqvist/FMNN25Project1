@@ -5,11 +5,12 @@ class Spline:
     def __init__(self, grid, control_points):
         self.grid = grid;
         self.control_points = control_points
-    def _find_controlPoints_(self, u, i):
+    def _find_controlPoints_(self, u):
         # returns an array with four first control points
+        I = self._find_interval(u)
         cp = self.control_points
-        col1 = [cp[0][i-2], cp[0][i-1], cp[0][i], cp[0][i+1]]
-        col2 = [cp[1][i-2], cp[1][i-1], cp[1][i], cp[1][i+1]] 
+        col1 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
+        col2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
         cp_first = np.array([col1, col2])
         return cp_first
     def _alpha_(self,u):
