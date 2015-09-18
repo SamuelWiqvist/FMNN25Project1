@@ -1,5 +1,6 @@
 import numpy as np
 import scipy.linalg as sl
+import matplotlib.pyplot as plt
 
 class Spline:
     def __init__(self, grid, control_points):
@@ -43,6 +44,7 @@ class Spline:
         return d
         
     def plot(s, points):
+        
         pass
     
     def __repr__(self):
