@@ -5,6 +5,10 @@ class Spline:
     def __init__(self, grid, control_points):
         self.grid = grid;
         self.control_points = control_points
+
+    def __call__(self, u):
+        return self.blossom(self, u)
+
     def _find_controlPoints_(self, u):
         # returns an array with four first control points
         I = self._find_interval_(u)
