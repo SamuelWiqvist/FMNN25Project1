@@ -7,7 +7,7 @@ class Spline:
         self.control_points = control_points
 
     def __call__(self, u):
-        return self.blossom(self, u)
+        return self._blossom(self, u)
 
     def _find_controlPoints_(self, u):
         # returns an array with four first control points
@@ -17,8 +17,10 @@ class Spline:
         col2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
         cp_first = np.array([col1, col2])
         return cp_first
+    
     def _find_interval_(self, u):
         return np.argmax(self.grid > u)
+
     def _alpha_(self,u):
         #Knots corresponds to the u:s inside a blossom pair
         #d[u; uI-1; uI] = alpha(u)d[uI-2; uI-1; uI] + (1 (u))d[uI-1; uI; uI+1]
@@ -27,7 +29,6 @@ class Spline:
         u_left_most_knot = self.grid[I-2]
         alpha = (u_right_most_knot - u)/(u_right_most_knot - u_left_most_knot)
         return alpha
-    
 
     def _blossom(self, u):
         d = _find_controlPoint_(self, u).toList()
@@ -54,4 +55,3 @@ def eval_basis(u, j): # just something I came up with, I dont know if it is corr
     s_temp = Spline(u,control_points)
     points = np.linspace(min(u),max(u),100).tolist()     
     plot(s_temp, points)
-
