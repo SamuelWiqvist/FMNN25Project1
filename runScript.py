@@ -1,5 +1,6 @@
 import numpy as np
 import scipy.linalg as sl
+from spline import Spline
 
 #%%
 grid = np.linspace(0,10,10) # K = 9
