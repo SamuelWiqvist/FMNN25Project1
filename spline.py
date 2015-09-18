@@ -44,9 +44,12 @@ class Spline:
             d = d2
         return d
         
-    def plot(s, points):
-        
-        pass
+    def plot(self, s, points):
+        plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro')
+        plt.axis([0, 10, 0, 10])
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.show()
     
     def __repr__(self):
         return 'Spline'
