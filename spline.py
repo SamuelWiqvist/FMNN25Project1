@@ -14,14 +14,13 @@ class Spline:
         # returns an array with four first control points
         I = self._find_interval(u)
         cp = self.control_points
-        col1 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
-        col2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
-        cp_first = np.array([col1, col2])
+        row1 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
+        row2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
+        cp_first = np.array([row1, row2])
         return cp_first
     
     def _find_interval(self, u):
         return np.argmax(self.grid > u)
-
 
     def _alpha(self,u):
         #Knots corresponds to the u:s inside a blossom pair
@@ -59,11 +58,11 @@ class Spline:
     def __repr__(self):
         return 'Spline'
 
-def eval_basis(u, j): # just something I came up with, I dont know if it is correct / Samuel
+def eval_basis(grid, j): 
     control_points = [(0,0)]
-    for i in range(1, len(u)-3):
+    for i in range(1, len(grid)-3):
         control_points.append((0,0))
     control_points[j] = (1,1) 
-    s_temp = Spline(u,control_points)
-    points = np.linspace(min(u),max(u),100).tolist()     
+    s_temp = Spline(grid,control_points)
+    points = np.linspace(min(grid),max(grid),100)
     plot(s_temp, points)
