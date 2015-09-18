@@ -1,6 +1,6 @@
 import numpy as np
 import scipy.linalg as sl
-from spline import Spline
+#from spline import Spline
 
 #%%
 grid = np.linspace(0,10,10) # K = 9
@@ -26,3 +26,4 @@ col2 = [control_points[1][i-2], control_points[1][i-1], control_points[1][i], co
 #%%
 t = np.array([col1, col2])
 #%%
+s.
