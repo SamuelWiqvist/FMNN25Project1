@@ -7,7 +7,7 @@ class Spline:
         self.control_points = control_points
     def _find_controlPoints_(self, u):
         # returns an array with four first control points
-        I = self._find_interval(u)
+        I = self._find_interval_(u)
         cp = self.control_points
         col1 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
         col2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
@@ -18,9 +18,9 @@ class Spline:
     def _alpha_(self,u):
         #Knots corresponds to the u:s inside a blossom pair
         #d[u; uI-1; uI] = alpha(u)d[uI-2; uI-1; uI] + (1 (u))d[uI-1; uI; uI+1]
-        I = self._find_interval(u)
-        u_right_most_knot = u[I+1]
-        u_left_most_knot = u[I-2]
+        I = self._find_interval_(u)
+        u_right_most_knot = self.grid[I+1]
+        u_left_most_knot = self.grid[I-2]
         alpha = (u_right_most_knot - u)/(u_right_most_knot - u_left_most_knot)
         return alpha
     
