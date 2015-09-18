@@ -40,7 +40,7 @@ class Spline:
         pass
     
     def __repr__(self):
-        return 'Spline"
+        return 'Spline'
 
 def eval_basis(u, j): # just something I came up with, I dont know if it is correct / Samuel
     control_points = [(0,0)]
