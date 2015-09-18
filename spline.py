@@ -25,7 +25,7 @@ class Spline:
         return np.argmax(self.grid > u)
 
     def _blossom(self, u):
-    d = _find_controlPoint_(self, u).toList()
+        d = _find_controlPoint_(self, u).toList()
         while len(d) > 1:
             d2 = []
             for i in range(len(d) - 1):
