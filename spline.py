@@ -18,7 +18,6 @@ class Spline:
         cp_first = np.array([col1, col2])
         return cp_first
     
-    
     def _find_interval(self, u):
         return np.argmax(self.grid > u)
 
@@ -33,7 +32,7 @@ class Spline:
         return alpha
 
     def _blossom(self, u):
-        d = _find_controlPoints(self, u).toList()
+        d = self._find_controlPoints(u).tolist()
         while len(d) > 1:
             d2 = []
             for i in range(len(d) - 1):
