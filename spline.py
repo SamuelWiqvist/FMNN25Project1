@@ -24,12 +24,19 @@ class Spline:
     def _find_interval_(self, u):
         return np.argmax(self.grid > u)
 
-               
-'''            
     def _blossom(self, u):
+    d = _find_controlPoint_(self, u).toList()
+        while len(d) > 1:
+            d2 = []
+            for i in range(len(d) - 1):
+                merge_x = _alpha(self, u)*d[i][0] + (1 - alpha(self, u))*d[i + 1][0]
+                merge_y = _alpha(self, u)*d[i][1] + (1 - alpha(self, u))*d[i + 1][1]
+                d2.append([merge_x, merge_y])
+            d = d2
+        return d
         
     def plot(s, points):
-'''
+        pass
 
 def eval_basis(u, j): # just something I came up with, I dont know if it is correct / Samuel
     control_points = [(0,0)]
