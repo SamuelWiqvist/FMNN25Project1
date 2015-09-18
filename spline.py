@@ -13,6 +13,8 @@ class Spline:
         col2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
         cp_first = np.array([col1, col2])
         return cp_first
+    def _find_interval_(self, u):
+        return np.argmax(self.grid > u)
     def _alpha_(self,u):
         #Knots corresponds to the u:s inside a blossom pair
         #d[u; uI-1; uI] = alpha(u)d[uI-2; uI-1; uI] + (1 (u))d[uI-1; uI; uI+1]
@@ -21,8 +23,7 @@ class Spline:
         u_left_most_knot = u[I-2]
         alpha = (u_right_most_knot - u)/(u_right_most_knot - u_left_most_knot)
         return alpha
-    def _find_interval_(self, u):
-        return np.argmax(self.grid > u)
+    
 
     def _blossom(self, u):
         d = _find_controlPoint_(self, u).toList()
@@ -37,6 +38,9 @@ class Spline:
         
     def plot(s, points):
         pass
+    
+    def __repr__(self):
+        return 'Spline"
 
 def eval_basis(u, j): # just something I came up with, I dont know if it is correct / Samuel
     control_points = [(0,0)]
