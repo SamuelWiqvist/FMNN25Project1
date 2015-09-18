@@ -11,7 +11,8 @@ class Spline:
         return self._blossom(u)
 
     def _find_controlPoints(self, u):
-        # returns an array with four first control points
+        # returns an array with the four first control points
+        # for the blossom recursion 
         I = self._find_interval(u)
         cp = self.control_points
         row1 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
@@ -58,5 +59,5 @@ def eval_basis(grid, j):
         control_points.append((0,0))
     control_points[j] = (1,1) 
     s_temp = Spline(grid,control_points)
-    points = np.linspace(min(grid),max(grid),100)
+    points = np.linspace(min(grid),max(grid),100)    
     plot(s_temp, points)
