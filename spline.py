@@ -43,15 +43,15 @@ class Spline:
         return d
         
     def plot(self, points):
-        u = np.linspace(np.argmin(self.grid), np.argmax(self.grid),points)
+        #u = np.linspace(np.argmin(self.grid), np.argmax(self.grid),points)
+        u = np.linspace(self.grid[2], self.grid[-3], points)
+
         print(u[18])
         #print(type(self(u[1])))
-        '''s = np.zeros((100,2))
+        s = np.zeros((100,2))
         for j in range(points):
             s[j,0] = self(u[j])[0][0]
-            s[j,1] = self(u[j])[0][1]
-            print(j)
-            '''
+            s[j,1] = self(u[j])[0][1]            
         plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro',self.control_points[0,:], self.control_points[1,:], 'r')#, s[:,1],s[:,2])
         plt.axis([0, 10, 0, 10])
         plt.xlabel('x')
