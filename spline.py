@@ -37,7 +37,7 @@ class Spline:
         return alpha
 
     def _blossom(self, u):
-        d = self._find_controlPoints(u).tolist()
+        d = np.transpose(self._find_controlPoints(u)).tolist()
         while len(d) > 1:
             d2 = []
             for i in range(len(d) - 1):
