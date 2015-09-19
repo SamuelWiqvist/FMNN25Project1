@@ -8,7 +8,7 @@ control_points = np.array([[3,4.5,5,6,7,8,8.6,9],[4,5,6,8,4,6,7.2,6]])# L = K - 
 #%%
 s = Spline(grid, control_points) # initialize the spline 
 #%%
-s._find_interval(0.2)
+s._find_interval(3)
 #%%
 t = s._find_controlPoints(7) #Fungerar inte för sista intervallet, fungerar dock nu
 #%%
@@ -18,4 +18,7 @@ s._blossom(3.5)
 #%%
 t = eval_basis(s.grid, 3)
 #%%
-s.plot(np.linspace(min(s.grid),max(s.grid),100))
+s.plot(50)
+#%%
+control_points = np.zeros((7,2))
+control_points[5] = 1

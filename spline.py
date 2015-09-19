@@ -15,9 +15,9 @@ class Spline:
         # for the blossom recursion 
         I = self._find_interval(u)
         cp = self.control_points
-        row1 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
-        row2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
-        cp_first = np.array([row1, row2])
+        row0 = [cp[0][I-2], cp[0][I-1], cp[0][I], cp[0][I+1]]
+        row1 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
+        cp_first = np.array([row0, row1])
         return cp_first
         
     
@@ -63,11 +63,9 @@ class Spline:
     def __repr__(self):
         return 'Spline'
 
-def eval_basis(grid, j): 
-    control_points = [(0,0)]
-    for i in range(1, len(grid)-3):
-        control_points.append((0,0))
-    control_points[j] = (1,1) 
+def eval_basis(grid, j):
+    control_points = np.zeros((len(grid)-3,2))
+    control_points[j] = 1
+    control_points.T
     s_temp = Spline(grid,control_points)
-    points = np.linspace(min(grid),max(grid),100)    
-    plot(s_temp, points)
+    s_temp.plot(100)
