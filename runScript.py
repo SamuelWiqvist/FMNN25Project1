@@ -10,7 +10,7 @@ s = Spline(grid, control_points) # initialize the spline
 #%%
 s._find_interval(7)
 #%%
-t = s._find_controlPoints(7) #Fungerar inte för 7 som bör vara med i domain(s)
+t = s._find_controlPoints(7.7) #Fungerar inte för 7 som bör vara med i domain(s)
 #%%
 s._alpha(3.5)
 #%%
@@ -22,3 +22,7 @@ s.plot(50)
 #%%
 control_points = np.zeros((7,2))
 control_points[5] = 1
+#%%
+s(2)  # this is not an valid input since 2 in [u_1 u_2] 
+#%%
+s(7) # this is a valid input since t in [u_k-3 u_k-2]

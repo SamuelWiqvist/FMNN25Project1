@@ -8,6 +8,9 @@ class Spline:
         self.control_points = control_points
 
     def __call__(self, u):
+        if(u >= self.grid[-3] or u <= self.grid[2]): # check input
+            print("Invalid input. The splin is only defined on [u_2 u_k-2]")
+            raise SystemExit
         return self._blossom(u)
 
     def _find_controlPoints(self, u):
