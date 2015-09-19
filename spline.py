@@ -49,16 +49,20 @@ class Spline:
         
     def plot(self, points):
         u = np.linspace(self.grid[2], self.grid[-3], points) # u2:uK-2
-        s = np.zeros((100,2))
-        for j in range(points):
+        u = u[1:len(u)-2] # remove end-points
+        s = np.zeros((points-3,2))
+        for j in range(points-3):
             s[j,0] = self(u[j])[0][0]
-            s[j,1] = self(u[j])[0][1]            
+            s[j,1] = self(u[j])[0][1] 
+        return s 
+        '''   
+        still need to fix the actual plotting 
         plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro',self.control_points[0,:], self.control_points[1,:], 'r', s[:,0],s[:,1])
         plt.axis([0, 10, 0, 10])
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()
-    
+        '''
     def __repr__(self):
         return 'Spline'
 

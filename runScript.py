@@ -26,3 +26,5 @@ control_points[5] = 1
 s(2)  # this is not an valid input since 2 in [u_1 u_2] 
 #%%
 s(7) # this is a valid input since t in [u_k-3 u_k-2]
+#%%
+t = s.plot(50)
