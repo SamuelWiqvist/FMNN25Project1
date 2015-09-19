@@ -18,7 +18,7 @@ s._blossom(3.5)
 #%%
 t = eval_basis(s.grid, 3)
 #%%
-s.plot(50)
+s.plot(100)
 #%%
 control_points = np.zeros((7,2))
 control_points[5] = 1

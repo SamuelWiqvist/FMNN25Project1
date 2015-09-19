@@ -47,11 +47,11 @@ class Spline:
             d = d2
         return d
         
-    def plot(self, points):
-        u = np.linspace(self.grid[2], self.grid[-3], points) # u2:uK-2
+    def plot(self, nbr_of_points):
+        u = np.linspace(self.grid[2], self.grid[-3], nbr_of_points) # u2:uK-2
         u = u[1:-1] # remove end-points
-        s = np.zeros((points-2,2))
-        for j in range(points-2):
+        s = np.zeros((nbr_of_points-2,2))
+        for j in range(nbr_of_points-2):
             s[j,0] = self(u[j])[0][0]
             s[j,1] = self(u[j])[0][1] 
         #return s 
