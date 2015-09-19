@@ -10,7 +10,7 @@ s = Spline(grid, control_points) # initialize the spline
 #%%
 s._find_interval(0.2)
 #%%
-t = s._find_controlPoints(5.58620689655) #Fungerar inte för sista intervallet, fungerar dock nu
+t = s._find_controlPoints(7) #Fungerar inte för sista intervallet, fungerar dock nu
 #%%
 s._alpha(3.5)
 #%%

@@ -19,9 +19,10 @@ class Spline:
         row2 = [cp[1][I-2], cp[1][I-1], cp[1][I], cp[1][I+1]] 
         cp_first = np.array([row1, row2])
         return cp_first
+        
     
     def _find_interval(self, u):
-        return np.argmax(self.grid > u)
+        return np.argmax(self.grid > u) -1
 
     def _alpha(self,u):
         #Knots corresponds to the u:s inside a blossom pair
@@ -45,7 +46,7 @@ class Spline:
         
     def plot(self, points):
         #u = np.linspace(np.argmin(self.grid), np.argmax(self.grid),points)
-        u = np.linspace(self.grid[2], self.grid[-3], points)
+        u = np.linspace(self.grid[2], self.grid[-4], points)
 
         print(u[18])
         #print(type(self(u[1])))
