@@ -54,15 +54,13 @@ class Spline:
         for j in range(points-3):
             s[j,0] = self(u[j])[0][0]
             s[j,1] = self(u[j])[0][1] 
-        return s 
-        '''   
-        still need to fix the actual plotting 
+        #return s 
         plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro',self.control_points[0,:], self.control_points[1,:], 'r', s[:,0],s[:,1])
         plt.axis([0, 10, 0, 10])
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()
-        '''
+        
     def __repr__(self):
         return 'Spline'
 
