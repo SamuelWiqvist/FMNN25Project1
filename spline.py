@@ -54,21 +54,23 @@ class Spline:
         for j in range(points-3):
             s[j,0] = self(u[j])[0][0]
             s[j,1] = self(u[j])[0][1] 
-        return s 
-        '''   
-        still need to fix the actual plotting 
-        plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro',self.control_points[0,:], self.control_points[1,:], 'r', s[:,0],s[:,1])
+        plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro')
+        plt.plot(s[:,0],s[:,1])
         plt.axis([0, 10, 0, 10])
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()
-        '''
+        return s 
+        
     def __repr__(self):
         return 'Spline'
 
 def eval_basis(grid, j):
-    control_points = np.zeros((len(grid)-3,2))
-    control_points[j] = 1
-    control_points.T
+    if j >  len(grid)-3:
+        print("Invalid input")
+        raise SystemExit
+    control_points = np.zeros((len(grid)-2,2))
+    control_points[j]= 1
+    control_points = control_points.T
     s_temp = Spline(grid,control_points)
     s_temp.plot(100)

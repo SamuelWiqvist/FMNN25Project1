@@ -1,5 +1,7 @@
 import numpy as np
 import scipy.linalg as sl
+import matplotlib.pyplot as plt
+
 #from spline import Spline
 runfile('./spline.py')
 #%%
@@ -28,3 +30,8 @@ s(2)  # this is not an valid input since 2 in [u_1 u_2]
 s(7) # this is a valid input since t in [u_k-3 u_k-2]
 #%%
 t = s.plot(50)
+#%%
+t = eval_basis(s.grid, 8)
+#%%
+
+
