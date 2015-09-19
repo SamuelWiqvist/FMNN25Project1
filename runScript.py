@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 runfile('./spline.py')
 #%%
 grid = np.linspace(0,10,10) # K = 9
-control_points = np.array([[3,4.5,5,6,7,8,8.6,9],[4,5,6,8,4,6,7.2,6]])# L = K - 2 = 7
+#control_points = np.array([[3,4.5,5,6,7,8,8.6,9],[4,5,6,8,4,6,7.2,6]])# L = K - 2 = 7
+control_points = np.array([[2.3,2.1,4,6,7,8,5.5,6.3],[7,5.5,4.3,4.5,4,5.56,7.2,6]])# L = K - 2 = 7
 #%%
 s = Spline(grid, control_points) # initialize the spline 
 #%%
@@ -29,9 +30,14 @@ s(2)  # this is not an valid input since 2 in [u_1 u_2]
 #%%
 s(7) # this is a valid input since t in [u_k-3 u_k-2]
 #%%
-t = s.plot(50)
+t = s.plot(100)
 #%%
-t = eval_basis(s.grid, 8)
+t = eval_basis(s.grid, 2)
 #%%
+plt.plot(s.control_points[0,:], s.control_points[1,:], 
+         color = 'r', 
+         ls = '--', 
+         marker = "*")
+plt.axis([0, 10, 0, 10])
 
-
+plt.axis()

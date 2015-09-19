@@ -54,8 +54,14 @@ class Spline:
         for j in range(nbr_of_points-2):
             s[j,0] = self(u[j])[0][0]
             s[j,1] = self(u[j])[0][1] 
-        plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro',self.control_points[0,:], self.control_points[1,:], 'r', s[:,0],s[:,1])
-        plt.axis([0, 10, 0, 10])
+        #plt.plot(self.control_points[0,:], self.control_points[1,:], 'ro',self.control_points[0,:], self.control_points[1,:], 'r', s[:,0],s[:,1])
+        plt.plot(self.control_points[0,:], self.control_points[1,:], 
+                 color = 'r', 
+                 ls = '--', 
+                 marker = "o")    
+        plt.plot(s[:,0],s[:,1], 'blue')        
+        plt.axis([min(self.grid), max(self.grid), 
+                  min(self.control_points[1][:]), max(self.control_points[1][:])])
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()
