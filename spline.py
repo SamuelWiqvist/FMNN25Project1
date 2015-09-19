@@ -9,7 +9,7 @@ class Spline:
 
     def __call__(self, u):
         if(u >= self.grid[-3] or u <= self.grid[2]): # check input
-            print("Invalid input. The splin is only defined on [u_2 u_k-2]")
+            print("Invalid input. The spline is only defined on [u_2 u_k-2]")
             raise SystemExit
         return self._blossom(u)
 
@@ -49,9 +49,9 @@ class Spline:
         
     def plot(self, points):
         u = np.linspace(self.grid[2], self.grid[-3], points) # u2:uK-2
-        u = u[1:len(u)-2] # remove end-points
-        s = np.zeros((points-3,2))
-        for j in range(points-3):
+        u = u[1:-1] # remove end-points
+        s = np.zeros((points-2,2))
+        for j in range(points-2):
             s[j,0] = self(u[j])[0][0]
             s[j,1] = self(u[j])[0][1] 
         #return s 
