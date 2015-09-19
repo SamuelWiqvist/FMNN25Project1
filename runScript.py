@@ -2,8 +2,10 @@ import numpy as np
 import scipy.linalg as sl
 import matplotlib.pyplot as plt
 
-#from spline import Spline
-runfile('./spline.py')
+
+from spline import Spline
+from spline import eval_basis
+#runfile('./spline.py')
 #%%
 grid = np.linspace(0,10,10) # K = 9
 #control_points = np.array([[3,4.5,5,6,7,8,8.6,9],[4,5,6,8,4,6,7.2,6]])# L = K - 2 = 7
@@ -15,7 +17,7 @@ s._find_interval(3)
 #%%
 t = s._find_controlPoints(7.7) #Fungerar inte för 7 som bör vara med i domain(s)
 #%%
-s._alpha(3.5)
+#s._alpha(3.5)
 #%%
 s._blossom(3.5)
 #%%

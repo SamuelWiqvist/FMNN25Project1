@@ -27,22 +27,27 @@ class Spline:
     def _find_interval(self, u):
         return np.argmax(self.grid > u) -1
 
-    def _alpha(self,u):
+    def _alpha(self, u, i1, i2):
         #Knots corresponds to the u:s inside a blossom pair
         #d[u; uI-1; uI] = alpha(u)d[uI-2; uI-1; uI] + (1 (u))d[uI-1; uI; uI+1]
         I = self._find_interval(u)
-        u_right_most_knot = self.grid[I+1]
-        u_left_most_knot = self.grid[I-2]
+        u_right_most_knot = self.grid[I + i2]
+        u_left_most_knot = self.grid[I + i1]
         alpha = (u_right_most_knot - u)/(u_right_most_knot - u_left_most_knot)
         return alpha
 
     def _blossom(self, u):
         d = np.transpose(self._find_controlPoints(u)).tolist()
+        index_order = [(-2, 1), (-1, 2), (0, 3), (-1, 1), (0, 2), (0, 1)]
+        index_counter = 0
         while len(d) > 1:
             d2 = []
             for i in range(len(d) - 1):
-                merge_x = self._alpha(u)*d[i][0] + (1 - self._alpha(u))*d[i + 1][0]
-                merge_y = self._alpha(u)*d[i][1] + (1 - self._alpha(u))*d[i + 1][1]
+                i1 = index_order[index_counter][0]
+                i2 = index_order[index_counter][1]
+                index_counter += 1
+                merge_x = self._alpha(u, i1, i2)*d[i][0] + (1 - self._alpha(u, i1, i2))*d[i + 1][0]
+                merge_y = self._alpha(u, i1, i2)*d[i][1] + (1 - self._alpha(u, i1, i2))*d[i + 1][1]
                 d2.append([merge_x, merge_y])
             d = d2
         return d
