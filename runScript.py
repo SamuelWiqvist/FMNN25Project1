@@ -8,9 +8,9 @@ control_points = np.array([[3,4.5,5,6,7,8,8.6,9],[4,5,6,8,4,6,7.2,6]])# L = K - 
 #%%
 s = Spline(grid, control_points) # initialize the spline 
 #%%
-s._find_interval(3)
+s._find_interval(7)
 #%%
-t = s._find_controlPoints(7) #Fungerar inte för sista intervallet, fungerar dock nu
+t = s._find_controlPoints(7) #Fungerar inte för 7 som bör vara med i domain(s)
 #%%
 s._alpha(3.5)
 #%%
