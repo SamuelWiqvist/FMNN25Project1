@@ -34,10 +34,3 @@ t = s.plot(100)
 #%%
 t = eval_basis(s.grid, 2)
 #%%
-plt.plot(s.control_points[0,:], s.control_points[1,:], 
-         color = 'r', 
-         ls = '--', 
-         marker = "*")
-plt.axis([0, 10, 0, 10])
-
-plt.axis()
