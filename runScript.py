@@ -3,9 +3,9 @@ import scipy.linalg as sl
 import matplotlib.pyplot as plt
 
 
-from spline import Spline
-from spline import eval_basis
-#runfile('./spline.py')
+#from spline import Spline
+#from spline import eval_basis
+runfile('./spline.py')
 #%%
 grid = np.linspace(0,10,10) # K = 9
 #control_points = np.array([[3,4.5,5,6,7,8,8.6,9],[4,5,6,8,4,6,7.2,6]])# L = K - 2 = 7
@@ -34,5 +34,22 @@ s(7) # this is a valid input since t in [u_k-3 u_k-2]
 #%%
 t = s.plot(100)
 #%%
-t = eval_basis(s.grid, 2)
 #%%
+basis_0 = _setup_basis(grid)
+#%%
+t = _basis_recursion(grid,3.5, 4, basis_0)
+#%%
+x = np.linspace(min(grid),max(grid),100)
+plt.plot(x,t[0])
+#%%
+nrb_of_basis = [3,2,1]
+for k in range(1,4):
+    N_next = []
+    print("loop1")
+    print(k)    
+    for j in range(0,nrb_of_basis[k-1]):
+        print("loop2")
+        print(j) 
+        
+        
+    
