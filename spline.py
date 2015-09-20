@@ -114,7 +114,9 @@ def _basis_recursion(grid,u, I, basis_0):
                 i_basis_old = i
             else:
                 i_basis_old = j
-            N_next_temp = _div((u-grid[i-1]),(grid[i + k - 1]-grid[i-1]))*basis_0[i_basis_old] + _div((grid[i+k]-u),(grid[i+k]-grid[i]))*basis_0[i_basis_old+1] 
+            l_part = _div((u-grid[i-1]),(grid[i + k - 1]-grid[i-1]))*basis_0[i_basis_old]
+            r_part = _div((grid[i+k]-u),(grid[i+k]-grid[i]))*basis_0[i_basis_old+1]
+            N_next_temp = l_part + r_part 
             N_next.append(N_next_temp)
         basis_0 = N_next
     return basis_0            
