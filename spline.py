@@ -93,7 +93,7 @@ def _setup_basis(grid):
     for i in range(len(grid)):
         if i == 0:
             N_0_temp = np.zeros((1, len(x)))
-        elif i == (len(grid)-3):
+        elif i == (len(grid)-1):
             start = np.piecewise(x,[x < grid[i-1], x > grid[i-1]], [0,1])
             N_0_temp = start          
         else:

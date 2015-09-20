@@ -42,6 +42,7 @@ t = _basis_recursion(grid,3.5, 4, basis_0)
 x = np.linspace(min(grid),max(grid),100)
 plt.plot(x,t[0])
 #%%
-
+for i in range(len(grid)):
+    print(i)
         
     
