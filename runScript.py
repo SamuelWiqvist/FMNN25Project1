@@ -42,14 +42,6 @@ t = _basis_recursion(grid,3.5, 4, basis_0)
 x = np.linspace(min(grid),max(grid),100)
 plt.plot(x,t[0])
 #%%
-nrb_of_basis = [3,2,1]
-for k in range(1,4):
-    N_next = []
-    print("loop1")
-    print(k)    
-    for j in range(0,nrb_of_basis[k-1]):
-        print("loop2")
-        print(j) 
-        
+
         
     
