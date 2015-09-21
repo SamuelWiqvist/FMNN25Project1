@@ -3,7 +3,7 @@ import scipy.linalg as sl
 import matplotlib.pyplot as plt
 
 
-#from spline import Spline
+from spline import Spline
 #from spline import eval_basis
 runfile('./spline.py')
 #%%

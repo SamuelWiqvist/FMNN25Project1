@@ -13,7 +13,7 @@ class Spline:
             raise SystemExit
         return self._blossom(u)
 
-    def _find_controlPoints(self, u):
+    def _find_control_points(self, u):
         # returns an array with the four first control points
         # for the blossom recursion 
         I = self._find_interval(u)
@@ -37,7 +37,7 @@ class Spline:
         return alpha
 
     def _blossom(self, u):
-        d = np.transpose(self._find_controlPoints(u)).tolist()
+        d = np.transpose(self._find_control_points(u)).tolist()
         index_order = [(-2, 1), (-1, 2), (0, 3), (-1, 1), (0, 2), (0, 1)]
         index_counter = 0
         while len(d) > 1:
@@ -105,10 +105,10 @@ def _setup_basis(grid):
     
 
 def _basis_recursion(grid,u, I, basis_0): 
-    nrb_of_basis = [3,2,1]
+    nbr_of_basis = [3,2,1]
     for k in range(1,4):
         N_next = []
-        for j in range(0,nrb_of_basis[k-1]): #j nbr of n_k basis needed to construct N_3_I
+        for j in range(0,nbr_of_basis[k-1]): #j nbr of n_k basis needed to construct N_3_I
             i = I + j            
             if k == 1:
                 i_basis_old = i
