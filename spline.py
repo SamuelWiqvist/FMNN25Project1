@@ -121,6 +121,15 @@ def _basis_recursion(grid,u, I, basis_0):
         basis_0 = N_next
     return basis_0            
 
+def N(u, i, k):
+    if k == 0:
+        if u >= grid[i - 1] and u < grid[i]:
+            return 1
+        else:
+            return 0
+    a = N(u, i, k - 1)*(u - grid[i - 1])/((grid[i + k - 1] - grid[i - 1]))
+    b = N(u, i + 1, k - 1)*(grid[i + k] - u)/(grid[i + k] - grid[i])
+    return a + b
     
 def eval_basis(grid, j):
     if j >  len(grid)-3:
