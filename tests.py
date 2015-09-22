@@ -20,5 +20,8 @@ class TestEverything(unittest.TestCase):
 	def test_exception(self):
 		self.assertRaises(ValueError, self.s, self.grid[1])
 
+	def test_de_boor(self):
+		u = np.linspace(grid[2], grid[-3])
+
 if __name__ == '__main__':
 	unittest.main()
