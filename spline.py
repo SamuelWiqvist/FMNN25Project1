@@ -71,32 +71,34 @@ class Spline:
         plt.show()
         return s 
         
+    def _div(self, num, denom):
+        if num == 0  and denom == 0:
+            return 0
+        else:
+            return num/denom 
+ 
+
+    def _N_base(self, u, i, k = 3):
+        if k == 0:
+            if u >= self.grid[i - 1] and u < self.grid[i]:
+                return 1
+            else:
+                return 0
+        a = self._N_base(u, i, k - 1)*self._div((u - self.grid[i - 1]),(self.grid[i + k - 1] - self.grid[i - 1]))
+        b = self._N_base(u, i + 1, k - 1)*self._div((self.grid[i + k] - u),(self.grid[i + k] - self.grid[i]))
+        return a + b
+
+    def N(self, i, k = 3):
+        def N(self,u):
+            return self._N_base(u,i,k)
+        return N
+        
     def __repr__(self):
         return 'Spline'
     
                
 
-def _div(self, other):
-    if self == 0  and other == 0:
-        return 0
-    else:
-        return self/other 
- 
 
-def N_base(u, i, k= 3):
-    if k == 0:
-        if u >= grid[i - 1] and u < grid[i]:
-            return 1
-        else:
-            return 0
-    a = N_base(u, i, k - 1)*_div((u - grid[i - 1]),(grid[i + k - 1] - grid[i - 1]))
-    b = N_base(u, i + 1, k - 1)*_div((grid[i + k] - u),(grid[i + k] - grid[i]))
-    return a + b
-
-def N(i, k = 3):
-    def N(u):
-        return N_base(u,i,k)
-    return N
 
 '''
 def eval_basis(grid, j):
