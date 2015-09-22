@@ -8,9 +8,6 @@ class Spline:
         self.control_points = control_points
 
     def __call__(self, u):
-        if(u >= self.grid[-3] or u <= self.grid[2]): # check input
-            print("Invalid input. The spline is only defined on [u_2 u_k-2]")
-            raise SystemExit
         return self._blossom(u)
 
     def _find_control_points(self, u):
@@ -37,6 +34,8 @@ class Spline:
         return alpha
 
     def _blossom(self, u):
+        if(u >= self.grid[-3] or u <= self.grid[2]): # check input
+            raise ValueError("Invalid input. The spline is only defined on [u_2 u_k-2]")
         d = np.transpose(self._find_control_points(u)).tolist()
         index_order = [(-2, 1), (-1, 2), (0, 3), (-1, 1), (0, 2), (0, 1)]
         index_counter = 0

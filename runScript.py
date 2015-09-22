@@ -45,5 +45,5 @@ utest = np.linspace(0,10,1000)
 Ntest = s.N(3)
 Narray = []
 for j in range(len(utest)):
-    Narray.append(Ntest(utest[j]))
+    Narray.append(Ntest(s,utest[j]))
 plt.plot(utest,Narray)
