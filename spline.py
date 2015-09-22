@@ -56,7 +56,7 @@ class Spline:
                 merge_y = self._alpha(u, i1, i2)*d[i][1] + (1 - self._alpha(u, i1, i2))*d[i + 1][1]
                 d2.append([merge_x, merge_y])
             d = d2
-        return d
+        return d[0]
         
     def plot(self, nbr_of_points = 100):
         '''Plots the open spline.'''
@@ -64,8 +64,8 @@ class Spline:
         u = u[1:-1] # remove end-points
         s = np.zeros((nbr_of_points-2,2))
         for j in range(nbr_of_points-2):
-            s[j,0] = self(u[j])[0][0]
-            s[j,1] = self(u[j])[0][1] 
+            s[j,0] = self(u[j])[0]
+            s[j,1] = self(u[j])[1] 
         plt.plot(self.control_points[0,:], self.control_points[1,:], 
                  color = 'r', 
                  ls = '--', 
