@@ -106,9 +106,10 @@ class Spline:
     def _sum(self, u):
         s_x = 0
         s_y = 0
-        for j in range(len(self.control_points[0])-1):
+        index = self._find_interval(u)
+        for j in range(index - 2, index + 2):
             s_x = self.control_points[0][j]*self._N_base(u,j) + s_x
-            s_y = self.control_points[1][j]*self._N_base(u,j) + s_y
+            s_y = self.control_points[1][j]*self._N_base(u,j) + s_y    
         res = [s_x, s_y]
         return res
     

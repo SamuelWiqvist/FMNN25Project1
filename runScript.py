@@ -38,7 +38,7 @@ control_points[5] = 1
 #t = _basis_recursion(grid,3.5, 4, basis_0)
 #%%
 x = np.linspace(min(grid),max(grid),100)
-plt.plot(x,t[0])        
+#plt.plot(x,t[0])        
 #%%
 utest = np.linspace(0,10,1000)
 Ntest = s.N(3)
