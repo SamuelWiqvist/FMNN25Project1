@@ -21,7 +21,11 @@ class TestEverything(unittest.TestCase):
 		self.assertRaises(ValueError, self.s, self.grid[1])
 
 	def test_de_boor(self):
-		u = np.linspace(grid[2], grid[-3])
+		uu = np.linspace(self.grid[2], self.grid[-3])
+		for u in uu:
+			a = self.s(u)
+			b = 3
+			self.assertAlmostEqual(a, b)
 
 if __name__ == '__main__':
 	unittest.main()

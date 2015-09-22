@@ -52,8 +52,9 @@ class Spline:
                 i1 = index_order[index_counter][0]
                 i2 = index_order[index_counter][1]
                 index_counter += 1
-                merge_x = self._alpha(u, i1, i2)*d[i][0] + (1 - self._alpha(u, i1, i2))*d[i + 1][0]
-                merge_y = self._alpha(u, i1, i2)*d[i][1] + (1 - self._alpha(u, i1, i2))*d[i + 1][1]
+                alpha = self._alpha(u, i1, i2)
+                merge_x =alpha*d[i][0] + (1 - alpha)*d[i + 1][0]
+                merge_y = alpha*d[i][1] + (1 - alpha)*d[i + 1][1]
                 d2.append([merge_x, merge_y])
             d = d2
         return d[0]
