@@ -8,6 +8,7 @@ class Spline:
         self.control_points = control_points
 
     def __call__(self, u):
+        '''Calculates the spline value for the grid point u'''
         return self._blossom(u)
 
     def _find_control_points(self, u):
@@ -51,7 +52,8 @@ class Spline:
             d = d2
         return d
         
-    def plot(self, nbr_of_points):
+    def plot(self, nbr_of_points = 100):
+        '''Plots the open spline.'''
         u = np.linspace(self.grid[2], self.grid[-3], nbr_of_points) # u2:uK-2
         u = u[1:-1] # remove end-points
         s = np.zeros((nbr_of_points-2,2))
@@ -68,7 +70,6 @@ class Spline:
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()
-        return s 
         
     def _div(self, num, denom):
         if num == 0  and denom == 0:
@@ -93,7 +94,7 @@ class Spline:
         return N
         
     def __repr__(self):
-        return 'Spline'
+        return 'Class object: Spline'
     
                
 
