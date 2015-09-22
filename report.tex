@@ -13,7 +13,12 @@
 \newcommand{\zz}{\mathbb{Z}}
 \newcommand{\qq}{\mathbb{Q}}
 
-\begin{document}
-test!!!
+\title{Project 1 - De Boor's Algorithm}
+\author{Linus Jangland, Anton Roth & Samuel Wiqvist}
 
+\begin{document}
+\section{Design class Spline}
+The attributes of our class are the control points (de Boor points), which describes the design of the curve that is to be recreated, and the grid points $u$. In the class Spline there are three "public" functions that can be called. The class' call function evaluates the value of the spline corresponding to a certain grid value $u$. This function is based on several other hidden class functions. Another "public" function is a plot function which plots the spline for all the grid points and in the plot are also the control points drawn. The last unhidden function returns the basis function $N_i^3$ for an input $i$. This function is based on the definition of the basis functions and thus generates the $N_i^3$ with a recursion algorithm. This means that this function is not based upon the already created 
+
+Tests have been implemented to the Spline class.  
 \end{document}

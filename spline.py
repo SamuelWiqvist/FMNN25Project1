@@ -86,6 +86,7 @@ class Spline:
  
 
     def _N_base(self, u, i, k = 3):
+        assert(i>0)
         if k == 0:
             if u >= self.grid[i - 1] and u < self.grid[i]:
                 return 1

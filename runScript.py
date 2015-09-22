@@ -41,7 +41,7 @@ x = np.linspace(min(grid),max(grid),100)
 #plt.plot(x,t[0])        
 #%%
 utest = np.linspace(0,10,1000)
-Ntest = s.N(3)
+Ntest = s.N(2)
 Narray = []
 for j in range(len(utest)):
     Narray.append(Ntest(s,utest[j]))
