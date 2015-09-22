@@ -34,17 +34,12 @@ s(7) # this is a valid input since t in [u_k-3 u_k-2]
 #%%
 t = s.plot(100)
 #%%
-#%%
 basis_0 = _setup_basis(grid)
 #%%
 t = _basis_recursion(grid,3.5, 4, basis_0)
 #%%
 x = np.linspace(min(grid),max(grid),100)
-plt.plot(x,t[0])
-#%%
-for i in range(len(grid)):
-    print(i)
-        
+plt.plot(x,t[0])        
 #%%
 utest = np.linspace(0,10,1000)
 Ntest = N(3)

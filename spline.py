@@ -74,11 +74,7 @@ class Spline:
     def __repr__(self):
         return 'Spline'
     
-            
-def calc_basis(grid, u,k):
-    basis_0 = _setup_basis(grid)
-    return _basis_recursion(grid,u, k, basis_0)
-    
+               
 
 def _div(self, other):
     if self == 0  and other == 0:
@@ -86,40 +82,6 @@ def _div(self, other):
     else:
         return self/other 
  
-   
-def _setup_basis(grid):
-    x = np.linspace(min(grid),max(grid),100)
-    N_0 = []
-    for i in range(len(grid)):
-        if i == 0:
-            N_0_temp = np.zeros((1, len(x)))
-        elif i == (len(grid)-1):
-            start = np.piecewise(x,[x < grid[i-1], x > grid[i-1]], [0,1])
-            N_0_temp = start          
-        else:
-            start = np.piecewise(x,[x < grid[i-1], x > grid[i-1]], [0,1]) 
-            stop = np.piecewise(x,[x < grid[i], x > grid[i]], [0,1])
-            N_0_temp = start - stop         
-        N_0.append(N_0_temp)        
-    return N_0        
-    
-
-def _basis_recursion(grid,u, I, basis_0): 
-    nbr_of_basis = [3,2,1]
-    for k in range(1,4):
-        N_next = []
-        for j in range(0,nbr_of_basis[k-1]): #j nbr of n_k basis needed to construct N_3_I
-            i = I + j            
-            if k == 1:
-                i_basis_old = i
-            else:
-                i_basis_old = j
-            l_part = _div((u-grid[i-1]),(grid[i + k - 1]-grid[i-1]))*basis_0[i_basis_old]
-            r_part = _div((grid[i+k]-u),(grid[i+k]-grid[i]))*basis_0[i_basis_old+1]
-            N_next_temp = l_part + r_part 
-            N_next.append(N_next_temp)
-        basis_0 = N_next
-    return basis_0            
 
 def N_base(u, i, k= 3):
     if k == 0:
@@ -136,6 +98,7 @@ def N(i, k = 3):
         return N_base(u,i,k)
     return N
 
+'''
 def eval_basis(grid, j):
     if j >  len(grid)-3:
         print("Invalid input")
@@ -147,4 +110,4 @@ def eval_basis(grid, j):
     print(s_temp.control_points)
     print(s_temp.grid)
     s_temp.plot(100)
-
+'''
