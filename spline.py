@@ -121,16 +121,21 @@ def _basis_recursion(grid,u, I, basis_0):
         basis_0 = N_next
     return basis_0            
 
-def N(u, i, k):
+def N_base(u, i, k= 3):
     if k == 0:
         if u >= grid[i - 1] and u < grid[i]:
             return 1
         else:
             return 0
-    a = N(u, i, k - 1)*(u - grid[i - 1])/((grid[i + k - 1] - grid[i - 1]))
-    b = N(u, i + 1, k - 1)*(grid[i + k] - u)/(grid[i + k] - grid[i])
+    a = N_base(u, i, k - 1)*_div((u - grid[i - 1]),(grid[i + k - 1] - grid[i - 1]))
+    b = N_base(u, i + 1, k - 1)*_div((grid[i + k] - u),(grid[i + k] - grid[i]))
     return a + b
-    
+
+def N(i, k = 3):
+    def N(u):
+        return N_base(u,i,k)
+    return N
+
 def eval_basis(grid, j):
     if j >  len(grid)-3:
         print("Invalid input")
@@ -142,3 +147,4 @@ def eval_basis(grid, j):
     print(s_temp.control_points)
     print(s_temp.grid)
     s_temp.plot(100)
+

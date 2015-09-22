@@ -15,7 +15,7 @@ s = Spline(grid, control_points) # initialize the spline
 #%%
 s._find_interval(3)
 #%%
-t = s._find_controlPoints(7.7) #Fungerar inte för 7 som bör vara med i domain(s)
+t = s._find_controlPoints(7) #Fungerar inte för 7 som bör vara med i domain(s)
 #%%
 #s._alpha(3.5)
 #%%
@@ -45,4 +45,10 @@ plt.plot(x,t[0])
 for i in range(len(grid)):
     print(i)
         
-    
+#%%
+utest = np.linspace(0,10,1000)
+Ntest = N(3)
+Narray = []
+for j in range(len(utest)):
+    Narray.append(Ntest(utest[j]))
+plt.plot(utest,Narray)
