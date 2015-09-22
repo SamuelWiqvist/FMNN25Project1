@@ -18,7 +18,7 @@ class TestEverything(unittest.TestCase):
 		self.assertIsNotNone(self.s(0.5))
 
 	def test_exception(self):
-		self.assertRaises(SystemExit, self.s, self.grid[1])
+		self.assertRaises(ValueError, self.s, self.grid[1])
 
 if __name__ == '__main__':
 	unittest.main()
