@@ -3,10 +3,16 @@ import scipy.linalg as sl
 import matplotlib.pyplot as plt
 
 class Spline:
+    '''A spline object contains the function that are needed to evaluate an open B-spline.
+        There are only two necessary inputs:
+        Control points - these define the structure you want to recreate
+        Grid - this is a vector of the u:s
+    '''
+        
     def __init__(self, grid, control_points):
         self.grid = grid;
         self.control_points = control_points
-
+            
     def __call__(self, u):
         '''Calculates the spline value for the grid point u'''
         return self._blossom(u)
