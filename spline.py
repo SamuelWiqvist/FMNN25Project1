@@ -81,7 +81,7 @@ class Spline:
         plt.show()
         
     def _div(self, num, denom):
-        # div i redefind such that 0/0 = 0
+        # div redefind such that 0/0 = 0
         if num == 0  and denom == 0:
             return 0
         else:
@@ -89,7 +89,7 @@ class Spline:
  
 
     def _N_base(self, u, i, k = 3):
-        # calculates the a point on the N_i_k base 
+        # calculates the point on the N_i_k base 
         assert(i>0)
         if k == 0:
             if u >= self.grid[i - 1] and u < self.grid[i]:
@@ -101,7 +101,7 @@ class Spline:
         return a + b
 
     def N(self, i, k = 3):
-        # return the base function N
+        # returns the base function N
         def N(self,u):
             return self._N_base(u,i,k)
         return N
