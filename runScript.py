@@ -52,6 +52,3 @@ s(3.5)
 s._sum(3.5)
 #%%
 s._N_base(3.5, 4)
-#%%
-for j in range(len(control_points[0])):
-    print(j)

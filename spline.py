@@ -29,11 +29,11 @@ class Spline:
         
     
     def _find_interval(self, u):
+        # finds the starting interval for the blossom recursion
         return np.argmax(self.grid > u) -1
 
     def _alpha(self, u, i1, i2):
-        #Knots corresponds to the u:s inside a blossom pair
-        #d[u; uI-1; uI] = alpha(u)d[uI-2; uI-1; uI] + (1 (u))d[uI-1; uI; uI+1]
+        # calculates the alphas in the blossom recursion
         I = self._find_interval(u)
         u_right_most_knot = self.grid[I + i2]
         u_left_most_knot = self.grid[I + i1]
@@ -41,6 +41,8 @@ class Spline:
         return alpha
 
     def _blossom(self, u):
+        # calculates the point on the spline using the blossom
+        # recursion method
         if(u >= self.grid[-3] or u <= self.grid[2]): # check input
             raise ValueError("Invalid input. The spline is only defined on [u_2 u_k-2]")
         d = np.transpose(self._find_control_points(u)).tolist()
@@ -79,6 +81,7 @@ class Spline:
         plt.show()
         
     def _div(self, num, denom):
+        # div i redefind such that 0/0 = 0
         if num == 0  and denom == 0:
             return 0
         else:
@@ -86,6 +89,7 @@ class Spline:
  
 
     def _N_base(self, u, i, k = 3):
+        # calculates the a point on the N_i_k base 
         assert(i>0)
         if k == 0:
             if u >= self.grid[i - 1] and u < self.grid[i]:
@@ -97,6 +101,7 @@ class Spline:
         return a + b
 
     def N(self, i, k = 3):
+        # return the base function N
         def N(self,u):
             return self._N_base(u,i,k)
         return N
@@ -105,6 +110,7 @@ class Spline:
         return 'Class object: Spline'
     
     def _sum(self, u):
+        # calculates the point on the spline using the summation method 
         s_x = 0
         s_y = 0
         index = self._find_interval(u)
@@ -113,21 +119,3 @@ class Spline:
             s_y = self.control_points[1][j]*self._N_base(u,j) + s_y    
         res = [s_x, s_y]
         return res
-    
-               
-
-
-
-'''
-def eval_basis(grid, j):
-    if j >  len(grid)-3:
-        print("Invalid input")
-        raise SystemExit
-    control_points = np.zeros((len(grid)-2,2))
-    control_points[j]= 1
-    control_points = control_points.T
-    s_temp = Spline(grid,control_points)
-    print(s_temp.control_points)
-    print(s_temp.grid)
-    s_temp.plot(100)
-'''
